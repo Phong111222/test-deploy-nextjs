@@ -4,9 +4,9 @@ import { useRouter } from 'next/dist/client/router';
 import { resolve } from 'path';
 export default function Home({ person }) {
   const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loaing...</div>;
-  }
+  //   if (router.isFallback) {
+  //     return <div>Loaing...</div>;
+  //   }
   return (
     <div>
       {person.name} - {person.age}
@@ -34,18 +34,15 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params }) {
   const data = JSON.parse(
-    readFileSync(
-      resolve(process.cwd(), '../', 'research-nextjs', 'test.json'),
-      {
-        encoding: 'utf-8',
-      }
-    )
+    readFileSync(resolve(process.cwd(), 'test.json'), {
+      encoding: 'utf-8',
+    })
   );
   let person;
   person = data.find((item) => item.id.toString() === params.id);

@@ -14,12 +14,9 @@ export default function Users({ users }) {
 
 export async function getStaticProps() {
   const data = JSON.parse(
-    readFileSync(
-      resolve(process.cwd(), '../', 'research-nextjs', 'test.json'),
-      {
-        encoding: 'utf-8',
-      }
-    )
+    readFileSync(resolve(process.cwd(), 'test.json'), {
+      encoding: 'utf-8',
+    })
   );
   return {
     props: {
