@@ -1,3 +1,4 @@
+import { randomInt } from 'crypto';
 import { readFileSync } from 'fs';
 import { useRouter } from 'next/dist/client/router';
 import { resolve } from 'path';
@@ -47,17 +48,18 @@ export async function getStaticProps({ params }) {
     )
   );
   let person;
-  person = data.find((item) => item.id === params.id);
+  person = data.find((item) => item.id.toString() === params.id);
   if (!person) {
     person = {
       id: params.id,
-      name: 'user' + params.id,
-      age: 20,
+      name: `user - ${params.id}`,
+      age: 22,
     };
   }
   return {
     props: {
       person,
     },
+    revalidate: 5,
   };
 }
