@@ -16,12 +16,9 @@ export default function Home({ person }) {
 
 export async function getStaticPaths() {
   const data = JSON.parse(
-    readFileSync(
-      resolve(process.cwd(), '../', 'research-nextjs', 'test.json'),
-      {
-        encoding: 'utf-8',
-      }
-    )
+    readFileSync(resolve(process.cwd(), 'test.json'), {
+      encoding: 'utf-8',
+    })
   );
 
   const paths = data.map((item) => {
