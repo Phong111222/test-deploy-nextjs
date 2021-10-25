@@ -14,12 +14,6 @@ export default function Dashboard() {
     };
     securePage();
   }, []);
-  // const [session, loading] = useSession();
-  // useEffect(() => {
-  //   if (!session) {
-  //     signIn();
-  //   }
-  // }, []);
   if (loading) {
     return <h2>Loading...</h2>;
   }
