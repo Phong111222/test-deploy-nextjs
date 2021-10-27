@@ -18,3 +18,5 @@ EXPOSE 3000
 #Runnng the app
 
 CMD "npm" "run" "start"
+
+
